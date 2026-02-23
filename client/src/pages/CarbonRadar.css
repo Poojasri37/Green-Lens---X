@@ -1,0 +1,283 @@
+.radar-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.radar-content {
+    display: grid;
+    grid-template-columns: 340px 1fr 300px;
+    gap: 16px;
+    padding: 16px;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Globe */
+.globe-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.globe-container {
+    flex: 1;
+    min-height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 -4px;
+}
+
+.globe-overlay-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px 0 4px;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 12px;
+}
+
+.overlay-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.overlay-val {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.overlay-label {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.overlay-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border-subtle);
+}
+
+/* Center */
+.radar-center-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.co2-hero-card {
+    flex-shrink: 0;
+}
+
+.co2-display {
+    text-align: center;
+    padding: 12px 0 16px;
+}
+
+.co2-unit-top {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.co2-number {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+}
+
+.co2-int {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--green-primary);
+    text-shadow: 0 0 20px var(--green-glow-strong);
+    line-height: 1;
+}
+
+.co2-equiv {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.co2-spark-row {
+    margin-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 12px;
+}
+
+/* NPU hero */
+.npu-hero-card {
+    flex-shrink: 0;
+}
+
+.npu-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.npu-big-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.npu-stat-label {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.npu-efficiency-badge {
+    margin-left: auto;
+    background: var(--green-subtle);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 10px 18px;
+    text-align: center;
+}
+
+.eff-num {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--green-primary);
+    text-shadow: 0 0 12px var(--green-glow);
+    font-family: var(--font-mono);
+}
+
+.eff-label {
+    font-size: 0.5rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+/* Mini stat grid */
+.radar-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.mini-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    gap: 6px;
+    text-align: center;
+}
+
+.mini-stat-val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.mini-stat-label {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.mini-stat-source {
+    font-size: 0.55rem;
+    color: var(--green-primary);
+    opacity: 0.8;
+    letter-spacing: 0.3px;
+}
+
+/* Right col */
+.radar-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.telemetry-card {
+    flex-shrink: 0;
+}
+
+.sparklines-card {
+    flex-shrink: 0;
+}
+
+.spark-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.spark-row .section-label {
+    min-width: 30px;
+    margin-bottom: 0;
+    font-size: 0.6rem;
+}
+
+.carbon-budget-card {
+    flex-shrink: 0;
+}
+
+.budget-display {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.budget-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.budget-unit {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: 6px;
+}
+
+.budget-desc {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.budget-compare {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 12px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.budget-compare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+}
+
+.budget-compare-item .label {
+    color: var(--text-secondary);
+}
+
+.budget-compare-item .val {
+    font-weight: 600;
+}

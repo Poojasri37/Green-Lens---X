@@ -1,0 +1,82 @@
+.telem-bar {
+    margin-bottom: 20px;
+}
+
+.telem-bar:last-child {
+    margin-bottom: 0;
+}
+
+.telem-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.telem-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.telem-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+}
+
+.telem-sublabel {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.telem-values {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.telem-percent {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 38px;
+    text-align: right;
+}
+
+.telem-power {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    min-width: 40px;
+    text-align: right;
+}
+
+.telem-fill {
+    transition: width 0.5s var(--ease-smooth);
+}
+
+/* Real / Sim provenance pill on TelemetryBar */
+.data-source-pill {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: var(--font-mono, monospace);
+    white-space: nowrap;
+}
+
+.data-source-pill--real {
+    color: var(--green-primary);
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+}
+
+.data-source-pill--sim {
+    color: var(--orange-accent, #f97316);
+    background: rgba(249, 115, 22, 0.08);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+}

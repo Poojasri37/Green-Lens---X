@@ -1,0 +1,285 @@
+.score-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.score-content {
+    display: grid;
+    grid-template-columns: 320px 1fr 300px;
+    gap: 16px;
+    padding: 16px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.score-hero-col {
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.score-breakdown-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.score-report-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* Hero card */
+.score-hero-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.award-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-subtle);
+    border: 1px solid var(--border-accent);
+    border-radius: 50%;
+}
+
+.score-hero-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0 8px;
+}
+
+/* Score ring */
+.score-ring-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.score-ring-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.score-ring-val {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.score-ring-wrapper.small .score-ring-val {
+    font-size: 1.5rem;
+}
+
+.score-ring-label {
+    font-size: 0.45rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.score-grade {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.score-summary {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 260px;
+}
+
+.download-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.download-btn.downloading {
+    background: var(--bg-elevated);
+    color: var(--text-muted);
+    cursor: wait;
+}
+
+/* Sub scores */
+.sub-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sub-score-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.sub-score-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sub-score-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sub-score-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+.sub-score-bar {
+    height: 4px;
+    background: var(--border-subtle);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.sub-score-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s var(--ease-smooth);
+}
+
+.sub-score-val {
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: right;
+}
+
+/* Ring grid */
+.ring-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    justify-items: center;
+}
+
+.ring-grid .score-ring-val {
+    font-size: 1.5rem;
+}
+
+/* Checklist */
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.checklist-item.pass {
+    background: var(--green-subtle);
+    border-color: var(--border-accent);
+    color: var(--text-primary);
+}
+
+.checklist-item.fail {
+    background: var(--bg-elevated);
+    border-color: var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+/* Report metrics */
+.report-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.report-metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.report-metric-row:last-child {
+    border-bottom: none;
+}
+
+.report-metric-label {
+    color: var(--text-secondary);
+}
+
+.report-metric-val {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Recommendations */
+.recs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.rec-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.rec-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--green-primary);
+    font-weight: 700;
+    min-width: 20px;
+    padding-top: 2px;
+}
+
+.rec-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+.rec-desc {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLens X | AMD Slingshot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="dark-mode">
+    <div id="canvas-container"></div>
+
+    <header class="glass-header">
+        <div class="logo">
+            <span class="accent-text">GREEN</span>LENS <span class="version">X</span>
+        </div>
+        <div class="system-status">
+            <div class="status-item">
+                <span class="label">NPU STATUS</span>
+                <span class="value pulse">READY (XDNA 2)</span>
+            </div>
+            <div class="status-item">
+                <span class="label">ENERGY IMPACT</span>
+                <span class="value" id="total-power">0.0W</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="left-panel">
+            <section class="card glass live-radar">
+                <div class="card-header">
+                    <h2>AI CARBON RADAR</h2>
+                    <div class="live-indicator">LIVE</div>
+                </div>
+                <div class="radar-stats">
+                    <div class="stat">
+                        <span class="label">Est. CO2e/hr</span>
+                        <span class="value" id="co2-value">0.000g</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Inference Latency</span>
+                        <span class="value" id="latency-value">0ms</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card glass precision-lab">
+                <div class="card-header">
+                    <h2>PRECISION TOGGLE LAB</h2>
+                </div>
+                <div class="toggle-group">
+                    <label>PRECISION</label>
+                    <div class="buttons">
+                        <button class="active" onclick="setPrecision('FP32')">FP32</button>
+                        <button onclick="setPrecision('BF16')">BF16</button>
+                        <button onclick="setPrecision('INT8')">INT8</button>
+                    </div>
+                </div>
+                <div class="toggle-group">
+                    <label>EXECUTION ENGINE</label>
+                    <div class="buttons">
+                        <button onclick="setEngine('CPU')">CPU</button>
+                        <button onclick="setEngine('GPU')">GPU</button>
+                        <button class="active highlight" onclick="setEngine('NPU')">AMD NPU</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="right-panel">
+            <section class="card glass stats-grid">
+                <div class="card-header">
+                    <h2>REAL-TIME TELEMETRY</h2>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-item">
+                        <div class="label-row">
+                            <span>CPU</span>
+                            <span id="cpu-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="cpu-fill" class="fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="label-row">
+                            <span>AMD Radeon™ GPU</span>
+                            <span id="gpu-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="gpu-fill" class="fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item accent">
+                        <div class="label-row">
+                            <span>AMD XDNA™ 2 NPU</span>
+                            <span id="npu-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="npu-fill" class="fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card glass coach-panel">
+                <div class="card-header">
+                    <h2>SUSTAINABILITY COACH</h2>
+                    <div class="ai-badge">AI AGENT</div>
+                </div>
+                <div class="coach-message" id="coach-text">
+                    Measuring real-time inference patterns... I'll suggest optimizations once I have enough data.
+                </div>
+                <div class="coach-tip">
+                    <span class="tip-label">TIP:</span>
+                    <span id="coach-tip-text">Using INT8 on NPU can reduce carbon by up to 90%.</span>
+                </div>
+            </section>
+
+            <section class="card glass diff-mode">
+                <div class="card-header">
+                    <h2>CARBON DIFF MODE</h2>
+                </div>
+                <div class="compare-grid">
+                    <div class="compare-item">
+                        <span class="label">LEGACY (CPU/GPU)</span>
+                        <div class="mini-bar">
+                            <div class="fill legacy" style="width: 85%"></div>
+                        </div>
+                        <span class="val">~45W</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="label">AMD NPU (XDNA 2)</span>
+                        <div class="mini-bar">
+                            <div class="fill efficient" style="width: 15%"></div>
+                        </div>
+                        <span class="val">~3.5W</span>
+                    </div>
+                </div>
+                <div class="diff-highlight">
+                    -92% EMISSIONS
+                </div>
+            </section>
+
+            <section class="card glass green-score-card">
+                <div class="green-score-container">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart green">
+                            <path class="circle-bg" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke-dasharray="85, 100" id="score-fill" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="score-value">
+                            <span id="score-num">85</span>
+                            <span class="label">GREEN SCORE™</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary">DOWNLOAD REPORT</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
